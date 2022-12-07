@@ -4,7 +4,7 @@
 <?php
 if (1 == 1) {
     print '
-    <header class="masthead" style="background-image:url(\'assets/img/home-bg.jpg\');">
+    <header class="masthead" style="background-image:url(\'assets/img/home.jpg\');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -18,7 +18,7 @@ if (1 == 1) {
     </header>';
 }
 if (isset($action) && $action != '') {
-    $query = "SELECT * FROM destionation";
+    $query = "SELECT * FROM destination";
     $query .= " WHERE id=" . $_GET['action'];
     $result = @mysqli_query($MySQL, $query);
     $row = @mysqli_fetch_array($result);
@@ -53,9 +53,9 @@ if (isset($action) && $action != '') {
     $query .= " WHERE archive='N'";
     $query .= " ORDER BY date DESC";
     $result = @mysqli_query($MySQL, $query);
-    if (1 == 1) {
 
-    }
+    var_dump($result);
+
     while ($row = @mysqli_fetch_array($result)) {
         print '
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -73,7 +73,7 @@ if (isset($action) && $action != '') {
                         <div class="d-flex">
                             <div>
                                 <time datetime="' . $row['date'] . '">' . pickerDateToMysql($row['date']) . '</time>
-                                <p class="text-muted mb-0">Domagoj Petelinc</p>
+                                <p class="text-muted mb-0">Patrik Pralas</p>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <?php
 if ($_POST['_action_'] == FALSE) {
     print '
-<header class="masthead" style="background-image: url(\'assets/img/login-signup-bg.jpg\');">
+<header class="masthead" style="background-image: url(\'assets/img/login-signup.jpg\');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -28,34 +28,33 @@ if ($_POST['_action_'] == FALSE) {
 
                                     <div class="mb-3"><button class="btn btn-primary d-block w-100" name="submit" type="submit" style="background: #252424;border-color: rgba(255,255,255,0);border-radius: 15px;">Login</button></div>
                                 </form>';
-                            }
-                            else if ($_POST['_action_'] == TRUE) {
-		
-                                $query  = "SELECT * FROM users";
-                                $query .= " WHERE username='" .  $_POST['username'] . "'";
-                                $query .= " AND archive='N'";
-                                $result = @mysqli_query($MySQL, $query);
-                                $row = @mysqli_fetch_array($result, MYSQLI_ASSOC);
-                                
-                                if (password_verify($_POST['password'], $row['password'])) {
-                                    #password_verify https://secure.php.net/manual/en/function.password-verify.php
-                                    $_SESSION['user']['valid'] = 'true';
-                                    $_SESSION['user']['id'] = $row['id'];
-                                    $_SESSION['user']['firstname'] = $row['firstname'];
-                                    $_SESSION['user']['lastname'] = $row['lastname'];
-                                    $_SESSION['message'] = '<p id="message">Welcome, ' . $_SESSION['user']['firstname'] . ' ' . $_SESSION['user']['lastname'] . '</p>';
-                                    # Redirect to admin website
-                                    header("Location: index.php?menu=7");
-                                }
-                                
-                                #Bad username or password
-                                else {
-                                    unset($_SESSION['user']);
-                                    $_SESSION['message'] = '<p id="message">You have entered wrong email or password!</p>';
-                                    header("Location: index.php?menu=7");
-                                }
-                            }
-                                print '
+} else if ($_POST['_action_'] == TRUE) {
+
+    $query = "SELECT * FROM users";
+    $query .= " WHERE username='" . $_POST['username'] . "'";
+    $query .= " AND archive='N'";
+    $result = @mysqli_query($MySQL, $query);
+    $row = @mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if (password_verify($_POST['password'], $row['password'])) {
+        #password_verify https://secure.php.net/manual/en/function.password-verify.php
+        $_SESSION['user']['valid'] = 'true';
+        $_SESSION['user']['id'] = $row['id'];
+        $_SESSION['user']['firstname'] = $row['firstname'];
+        $_SESSION['user']['lastname'] = $row['lastname'];
+        $_SESSION['message'] = '<p id="message">Welcome, ' . $_SESSION['user']['firstname'] . ' ' . $_SESSION['user']['lastname'] . '</p>';
+        # Redirect to admin website
+        header("Location: index.php?menu=7");
+    }
+
+    #Bad username or password
+    else {
+        unset($_SESSION['user']);
+        $_SESSION['message'] = '<p id="message">You have entered wrong email or password!</p>';
+        header("Location: index.php?menu=7");
+    }
+}
+print '
                             </div>
                         </div>
                     </div>
@@ -63,13 +62,13 @@ if ($_POST['_action_'] == FALSE) {
             </div>
         </section>
     </header>'
-?>
+    ?>
 <script>
-  setTimeout(function(){
-    document.getElementById('message').style.display = 'none';
-    /* or
-    var item = document.getElementById('info-message')
-    item.parentNode.removeChild(item); 
-    */
-  }, 1500);
+    setTimeout(function () {
+        document.getElementById('message').style.display = 'none';
+        /* or
+        var item = document.getElementById('info-message')
+        item.parentNode.removeChild(item); 
+        */
+    }, 1500);
 </script>

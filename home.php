@@ -1,6 +1,6 @@
 <?php
 print '
-  <header class="masthead" style="background-image:url(\'assets/img/post-bg.jpg\');">
+  <header class="masthead" style="background-image:url(\'assets/img/post.jpg\');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -15,9 +15,9 @@ print '
     <section class="photo-gallery py-4 py-xl-5">
         <div class="container-fluid p-0">
             <div class="row g-0 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox="">
-                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover-1.jpg" style="width: 95%;height: 95%;"></a></div>
-                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover-2.jpg" style="width: 95%;height: 95%;"></a></div>
-                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover-3.jpg" style="width: 95%;height: 95%;"></a></div>
+                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover1.jpg" style="width: 95%;height: 95%;"></a></div>
+                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover2.jpg" style="width: 95%;height: 95%;"></a></div>
+                <div class="col-md-8 col-xl-4 offset-md-1 offset-xl-0 item"><img class="img-fluid" src="assets/img/cover3.jpg" style="width: 95%;height: 95%;"></a></div>
             </div>
         </div>
     </section>

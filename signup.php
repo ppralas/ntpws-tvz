@@ -1,7 +1,7 @@
-<?php 
-	if ($_POST['_action_'] == FALSE) {
-		print '
-    <header class="masthead" style="background-image: url(\'assets/img/login-signup-bg.jpg\');">
+<?php
+if ($_POST['_action_'] == FALSE) {
+    print '
+    <header class="masthead" style="background-image: url(\'assets/img/login-signup.jpg\');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -28,12 +28,12 @@
                                                 <div class="mb-3"><input class="form-control" type="password" id="password" name="password" placeholder="Password.." pattern=".{4,}" required></div>
                                                 <label for="country">Country:</label>
                                                 <select name="country" id="country">';
-                                                $query  = "SELECT * FROM countries";
-                                                $result = @mysqli_query($MySQL, $query);
-                                                while($row = @mysqli_fetch_array($result)) {
-                                                    print '<option value="' . $row['country_code'] . '">' . $row['country_name'] . '</option>';
-                                                }
-                                                print'
+    $query = "SELECT * FROM countries";
+    $result = @mysqli_query($MySQL, $query);
+    while ($row = @mysqli_fetch_array($result)) {
+        print '<option value="' . $row['country_code'] . '">' . $row['country_name'] . '</option>';
+    }
+    print '
                                                 </div>
                                                 <div class="mb-3">
                                                     <input class="btn btn-primary d-block w-100" type="submit" style="background: #252424;border-color: var(--bs-card-cap-bg);border-radius: 15px;"></input>
@@ -49,30 +49,28 @@
             </div>
         </div>
     </header>';
-                                            }
-    else if ($_POST['_action_'] == TRUE) {
-        $query  = "SELECT * FROM users";
-		$query .= " WHERE email='" .  $_POST['email'] . "'";
-		$query .= " OR username='" .  $_POST['username'] . "'";
-		$result = @mysqli_query($MySQL, $query);
-		$row = @mysqli_fetch_array($result, MYSQLI_ASSOC);
-		
-		if ($row['email'] == '' || $row['username'] == '') {
-			# password_hash https://secure.php.net/manual/en/function.password-hash.php
-			# password_hash() creates a new password hash using a strong one-way hashing algorithm
-			$pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
-			
-			$query  = "INSERT INTO users (firstname, lastname, email, username, password, country)";
-			$query .= " VALUES ('" . $_POST['firstname'] . "', '" . $_POST['lastname'] . "', '" . $_POST['email'] . "', '" . $_POST['username'] . "', '" . $pass_hash . "', '" . $_POST['country'] . "')";
-			$result = @mysqli_query($MySQL, $query);
-			
-			# ucfirst() — Make a string's first character uppercase
-			# strtolower() - Make a string lowercase
-			echo '<p>' . ucfirst(strtolower($_POST['firstname'])) . ' ' .  ucfirst(strtolower($_POST['lastname'])) . ', thank you for registration </p>
+} else if ($_POST['_action_'] == TRUE) {
+    $query = "SELECT * FROM users";
+    $query .= " WHERE email='" . $_POST['email'] . "'";
+    $query .= " OR username='" . $_POST['username'] . "'";
+    $result = @mysqli_query($MySQL, $query);
+    $row = @mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if ($row['email'] == '' || $row['username'] == '') {
+        # password_hash https://secure.php.net/manual/en/function.password-hash.php
+        # password_hash() creates a new password hash using a strong one-way hashing algorithm
+        $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
+
+        $query = "INSERT INTO users (firstname, lastname, email, username, password, country)";
+        $query .= " VALUES ('" . $_POST['firstname'] . "', '" . $_POST['lastname'] . "', '" . $_POST['email'] . "', '" . $_POST['username'] . "', '" . $pass_hash . "', '" . $_POST['country'] . "')";
+        $result = @mysqli_query($MySQL, $query);
+
+        # ucfirst() — Make a string's first character uppercase
+        # strtolower() - Make a string lowercase
+        echo '<p>' . ucfirst(strtolower($_POST['firstname'])) . ' ' . ucfirst(strtolower($_POST['lastname'])) . ', thank you for registration </p>
 			<hr>';
-		}
-		else {
-			echo '<p>User with this email or username already exist!</p>';
-		}
-	}                                 
+    } else {
+        echo '<p>User with this email or username already exist!</p>';
+    }
+}
 ?>

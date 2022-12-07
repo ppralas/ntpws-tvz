@@ -1,7 +1,7 @@
 <?php
-print'
+print '
 <body>
-    <header class="masthead" style="background-image:url(\'assets/img/contact-bg.jpg\');">
+    <header class="masthead" style="background-image:url(\'assets/img/contact.jpg\');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
