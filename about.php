@@ -1,5 +1,5 @@
-    <?php
-    print'
+<?php
+print '
     <header class="masthead" style="background-image:url(\'assets/img/about-bg.jpg\');">
         <div class="overlay"></div>
         <div class="container">
@@ -14,10 +14,10 @@
     </header>
     <div class="container">
         <div class="row">
-            <div class="col-xl-4"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/xNN7iTA57jM" width="100%" height="80%"></iframe></div>
+            <div class="col-xl-4"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/watch?v=zfO557mhIGw&ab_channel=GoldMusicProduction" width="100%" height="80%"></iframe></div>
             <div class="col-md-10 col-lg-8 mx-auto">
-                <p>Here is some relaxing forrest ambient music for reading books</p>
-                <p><br><span style="color: rgb(0, 0, 0);">Books give you right direction to lead your life. We read about different philosophies about life and this gives us better understanding of life. We start to comprehend life and it purpose. Books are the best motivator of life and best assistant for life. They tell you that lives of all the great ones were full of troubles and tribulations.</span><br><br></p>
+                <p>You can always travel and lisen some audio guides!</p>
+                <p><br><span style="color: rgb(0, 0, 0);">Picturing a luxury holiday in the Caribbean is easy. Writing about it is far harder. That’s exactly the challenge Nick and Nicky Parker, owners of the Silver Moon catamaran fleet, faced before tapping MarketSmiths. Just as well they did: we soon brought their website to vivid life, helping readers touch and taste the treasures of Barbados all while sitting at their computers. By the time we were done, Nick and Nicky were thrilled with our work—and excited to welcome hundreds more holidaymakers to their corner of paradise. </span><br><br></p>
             </div>
         </div>
     </div>
