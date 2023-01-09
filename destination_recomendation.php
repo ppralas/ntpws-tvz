@@ -21,6 +21,8 @@ if (isset($action) && $action != '') {
     $query = "SELECT * FROM destination";
     $query .= " WHERE id=" . $_GET['action'];
     $result = @mysqli_query($MySQL, $query);
+    var_dump($result);
+    die();
     $row = @mysqli_fetch_array($result);
     print '
     <div class="container py-4 py-xl-5">
@@ -50,11 +52,11 @@ if (isset($action) && $action != '') {
 ';
 } else {
     $query = "SELECT * FROM destination";
-    $query .= " WHERE archive='N'";
-    $query .= " ORDER BY date DESC";
-    $result = @mysqli_query($MySQL, $query);
-
-    var_dump($result);
+    $result = mysqli_query($MySQL, $query);
+    //$query .= " WHERE archive='N'";
+    //$query .= " ORDER BY date DESC";
+    //$result = mysqli_query($MySQL, $query);
+    //var_dump(mysqli_error($MySQL));
 
     while ($row = @mysqli_fetch_array($result)) {
         print '
@@ -65,14 +67,14 @@ if (isset($action) && $action != '') {
                         <p class="text-primary card-text mb-0">Destination :</p>
                         <h4 class="card-title">' . $row['title'] . '</h4>';
         if (strlen($row['description']) > 300) {
-            echo substr(strip_tags($row['description']), 0, 300) . '... <a href="index.php?menu=' . $menu . '&amp;action=' . $row['id'] . '" style="blue">More</a>';
+            echo substr(strip_tags($row['description']), 0, 300) . '... <a href="index.php?menu=' . $menu . '&amp;acti  . " style="blue">More</a>';
         } else {
             echo strip_tags($row['description']);
         }
         print '
                         <div class="d-flex">
                             <div>
-                                <time datetime="' . $row['date'] . '">' . pickerDateToMysql($row['date']) . '</time>
+                                <time datetime="' . $row['date'] . '">' . $row['date'] . '</time>
                                 <p class="text-muted mb-0">Patrik Pralas</p>
                             </div>
                         </div>
